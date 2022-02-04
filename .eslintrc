@@ -1,0 +1,7 @@
+{
+  "extends": ["airbnb/base", "prettier"],
+  "rules": {
+    "arrow-body-style": "off",
+    "no-console": "error"
+  }
+}
