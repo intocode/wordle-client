@@ -1,7 +1,7 @@
 {
-  "extends": ["airbnb/base", "prettier"],
+  "extends": ["prettier", "react-app", "react-app/jest"],
   "rules": {
     "arrow-body-style": "off",
-    "no-console": "error"
+    "no-console": "warn"
   }
 }
