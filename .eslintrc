@@ -2,6 +2,24 @@
   "extends": ["react-app", "react-app/jest", "airbnb", "prettier"],
   "rules": {
     "arrow-body-style": "off",
-    "no-console": "warn"
+    "no-console": "warn",
+		"react/jsx-filename-extension": "off",
+		"import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+  ]
+	},
+	"settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }
