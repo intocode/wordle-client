@@ -1,12 +1,12 @@
 import React from 'react';
 
-type CellProps = {
+type CellProps = React.HTMLAttributes<HTMLDivElement> & {
   value: string;
-  color: string;
+  className: string;
 };
 
-export const Cell = ({ value, color }: CellProps) => {
-  const classNameColor = `w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-4xl font-bold rounded ${color}`;
+export const Cell = ({ value, className }: CellProps) => {
+  const classNameColor = `w-14 h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-4xl font-bold rounded ${className}`;
 
   return (
     <div className={classNameColor}>

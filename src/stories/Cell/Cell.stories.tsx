@@ -7,17 +7,17 @@ export default {
 };
 
 export const Default = () => {
-  return <Cell value="d" color="text-black" />;
+  return <Cell value="d" className="text-black" />;
 };
 
 export const Absent = () => {
-  return <Cell value="p" color="bg-yellow-500 text-white" />;
+  return <Cell value="p" className="bg-yellow-500 text-white" />;
 };
 
 export const Correct = () => {
-  return <Cell value="p" color="bg-green-500 text-white" />;
+  return <Cell value="p" className="bg-green-500 text-white" />;
 };
 
 export const OutOfPlace = () => {
-  return <Cell value="p" color="bg-gray-500 text-white" />;
+  return <Cell value="p" className="bg-gray-500 text-white" />;
 };
