@@ -4,6 +4,7 @@
     "arrow-body-style": "off",
     "no-console": "warn",
 		"react/jsx-filename-extension": "off",
+    "react/function-component-definition": "off",
 		"import/extensions": [
       "error",
       "ignorePackages",
