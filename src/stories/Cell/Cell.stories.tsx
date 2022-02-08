@@ -7,7 +7,7 @@ export default {
 };
 
 export const Default = () => {
-  return <Cell value="l" color="text-black" />;
+  return <Cell value="d" color="text-black" />;
 };
 
 export const Absent = () => {
