@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineCell } from '../../components/LineCell/LineCell';
+import LineCell from '../../components/LineCell/LineCell';
 
 export default {
   title: 'LineCell',

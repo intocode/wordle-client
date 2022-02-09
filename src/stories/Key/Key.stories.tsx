@@ -1,5 +1,5 @@
 import React from 'react';
-import { Key } from '../../components/ui/Key/Key';
+import Key from '../../components/ui/Key/Key';
 
 export default {
   title: 'Key',
