@@ -1,11 +1,11 @@
 import React from 'react';
-import Cell from '../Cell/Cell';
+import Cell from '../ui/Cell/Cell';
 
 type LineCellProps = {
   word?: string;
 };
 
-export const LineCell = ({ word }: LineCellProps) => {
+const LineCell = ({ word }: LineCellProps) => {
   return (
     <div className="flex mb-1 justify-center">
       {word
