@@ -1,8 +1,8 @@
 import React from 'react';
 
-type CellProps = React.HTMLAttributes<HTMLDivElement> & {
+type CellProps = {
   value: string;
-  className: string;
+  className?: string | undefined;
 };
 
 export const Cell = ({ value, className }: CellProps) => {
