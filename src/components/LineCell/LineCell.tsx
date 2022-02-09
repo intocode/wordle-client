@@ -7,7 +7,7 @@ type LineCellProps = {
 
 export const LineCell = ({ word }: LineCellProps) => {
   return (
-    <div className="flex mb-1">
+    <div className="flex mb-1 justify-center">
       {word
         ? word.split('').map((item) => {
             return <Cell value={item} className="text-black border-2" />;
