@@ -6,7 +6,18 @@ export default {
   component: Key,
 };
 
-const Template = () => {
-  return <Key value="а" />;
+export const Default = () => {
+  return <Key value="в" />;
 };
-export const Default = Template;
+
+export const Absent = () => {
+  return <Key value="ф" className="bg-yellow-500" />;
+};
+
+export const Correct = () => {
+  return <Key value="р" className="bg-green-500" />;
+};
+
+export const OutOfPlace = () => {
+  return <Key value="л" className="bg-gray-500" />;
+};
