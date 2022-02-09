@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cell } from '../../components/Cell/Cell';
+import Cell from '../../components/ui/Cell/Cell';
 
 export default {
   title: 'Cell',

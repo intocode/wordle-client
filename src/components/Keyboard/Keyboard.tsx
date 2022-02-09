@@ -1,5 +1,5 @@
 import React from 'react';
-import Key from '../Key/Key';
+import Key from '../ui/Key/Key';
 
 const Keyboard = () => {
   return (

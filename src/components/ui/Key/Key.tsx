@@ -1,11 +1,11 @@
 import React from 'react';
 
-type KeyProprs = {
+type KeyProps = {
   value: string;
   className?: string;
 };
 
-export const Key = ({ value, className }: KeyProprs) => {
+const Key = ({ value, className }: KeyProps) => {
   const classNameColor = `flex items-center py-3 px-3 uppercase justify-center rounded mx-0.5 text-[18px] font-bold cursor-pointer select-none text-black bg-slate-200 text-black ${className}`;
 
   return (
