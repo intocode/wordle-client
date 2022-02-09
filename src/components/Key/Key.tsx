@@ -2,7 +2,7 @@ import React from 'react';
 
 type KeyProprs = {
   value: string;
-  className?: string | undefined;
+  className?: string;
 };
 
 export const Key = ({ value, className }: KeyProprs) => {

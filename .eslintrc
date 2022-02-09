@@ -6,7 +6,7 @@
 		"react/jsx-filename-extension": "off",
     "react/function-component-definition": "off",
 		"react/prop-types": "off",
-		"react/require-default-props": 0,
+		"react/require-default-props": "off",
 		"import/extensions": [
       "error",
       "ignorePackages",

@@ -1,8 +1,8 @@
 import React from 'react';
 
 type CellProps = {
-  value: string;
-  className?: string | undefined;
+  value?: string;
+  className?: string;
 };
 
 export const Cell = ({ value, className }: CellProps) => {
