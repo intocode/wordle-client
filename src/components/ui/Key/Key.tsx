@@ -6,7 +6,7 @@ type KeyProps = {
 };
 
 const Key = ({ value, className }: KeyProps) => {
-  const classNameColor = `flex items-center py-3 px-3 uppercase justify-center rounded mx-0.5 text-[18px] font-bold cursor-pointer select-none text-black bg-slate-200 text-black ${className}`;
+  const classNameColor = `flex-1 mr-[4px] mb-[4px] rounded uppercase font-bold h-12 w-10 text-sm cursor-pointer select-none text-black bg-slate-200 ${className}`;
 
   return (
     <button type="button" className={classNameColor}>

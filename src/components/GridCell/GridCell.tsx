@@ -8,7 +8,7 @@ const GridCell = () => {
   const maxAttempts = new Array(game.maxAttemptsCount).fill(null);
 
   return (
-    <div className="p-10">
+    <div className="w-full p-10">
       {maxAttempts.map(() => {
         return <LineCell />;
       })}

@@ -1,12 +1,10 @@
 import React from 'react';
 import GridCell from '../../GridCell/GridCell';
-import Keyboard from '../../Keyboard/Keyboard';
 
 const Main = () => {
   return (
-    <div>
+    <div className="flex flex-auto justify-center items-center">
       <GridCell />
-      <Keyboard />
     </div>
   );
 };
