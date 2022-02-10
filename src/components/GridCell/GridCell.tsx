@@ -1,8 +1,11 @@
 import React from 'react';
+import useGame from '../../context/GameContext/useGame';
 import LineCell from '../LineCell/LineCell';
 
 const GridCell = () => {
-  const maxAttempts = [1, 2, 3, 4, 5, 6];
+  const game = useGame();
+
+  const maxAttempts = new Array(game.maxAttemptsCount).fill(null);
 
   return (
     <div className="p-10">
