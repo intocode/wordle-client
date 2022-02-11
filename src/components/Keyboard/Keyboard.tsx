@@ -9,7 +9,7 @@ const Keyboard = () => {
   ];
 
   return (
-    <div className="w-full p-4">
+    <div className="fixed bottom-1 max-w-md w-full p-4">
       {keys.map((item) => {
         return (
           <div className="flex">

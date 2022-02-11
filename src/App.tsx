@@ -8,7 +8,9 @@ function App() {
     <div className="App">
       <div className="mx-auto max-w-md">
         <Header />
-        <Main />
+        <div className="h-[calc(100vh-300px)] overflow-y-scroll">
+          <Main />
+        </div>
         <Keyboard />
       </div>
     </div>
