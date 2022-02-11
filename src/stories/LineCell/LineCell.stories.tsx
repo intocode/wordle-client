@@ -1,11 +1,11 @@
 import React from 'react';
-import LineCell from '../../components/LineCell/LineCell';
+import GridRow from '../../components/GridRow/GridRow';
 
 export default {
   title: 'LineCell',
-  components: LineCell,
+  components: GridRow,
 };
 
 export const Default = () => {
-  return <LineCell word="hello" />;
+  return <GridRow index={0} />;
 };

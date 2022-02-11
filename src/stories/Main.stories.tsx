@@ -1,11 +1,11 @@
 import React from 'react';
-import Main from '../components/layout/Main/Main';
+import Grid from '../components/layout/Grid/Grid';
 
 export default {
-  title: 'Main',
-  components: Main,
+  title: 'Grid',
+  components: Grid,
 };
 
 export const Default = () => {
-  return <Main />;
+  return <Grid />;
 };

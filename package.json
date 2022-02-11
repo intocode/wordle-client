@@ -16,7 +16,7 @@
     "prettier:check": "prettier src --check",
     "lint": "eslint src --max-warnings 0 --report-unused-disable-directives",
     "lint:fix": "eslint src --fix",
-    "check": "npm run prettier:check && npm run lint",
+    "check": "npm run prettier:check && npm run lint && npm run build",
     "sb": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },

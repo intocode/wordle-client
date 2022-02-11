@@ -17,9 +17,14 @@ module.exports = {
     'no-console': 'warn',
 
     'react/function-component-definition': 'off',
-    
+
     // отключаем, т.к. правило считается устаревшим, typescript справляется сам без proptypes
     'react/require-default-props': 'off',
+
+    'react/jsx-props-no-spreading': [2, { 'html': 'ignore' }],
+
+    // состояние error мешает во время разработки
+    '@typescript-eslint/no-unused-vars': 'warn'
   },
   settings: {
     'import/resolver': {
