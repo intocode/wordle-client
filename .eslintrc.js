@@ -21,10 +21,16 @@ module.exports = {
     // отключаем, т.к. правило считается устаревшим, typescript справляется сам без proptypes
     'react/require-default-props': 'off',
 
-    'react/jsx-props-no-spreading': [2, { 'html': 'ignore' }],
+    'react/jsx-props-no-spreading': [2, { html: 'ignore' }],
 
     // состояние error мешает во время разработки
-    '@typescript-eslint/no-unused-vars': 'warn'
+    '@typescript-eslint/no-unused-vars': 'warn',
+
+    // https://redux-toolkit.js.org/usage/immer-reducers#linting-state-mutations
+    'no-param-reassign': [
+      'error',
+      { props: true, ignorePropertyModificationsFor: ['state'] },
+    ],
   },
   settings: {
     'import/resolver': {

@@ -1,24 +1,71 @@
-import React from 'react';
-import Key from '../ui/Key/Key';
+import React, { useCallback, useEffect } from 'react';
+import { backspace, doAttempt, typeLetter } from '../../redux/gameSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { getClassNameByLetterState } from '../../utils/game';
+import Key from './Key';
+
+const keys = [
+  ['й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ'],
+  ['ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э'],
+  ['Backspace', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', 'Enter'],
+];
+
+const flatKeys = keys.flat(1);
 
 const Keyboard = () => {
-  const keys = [
-    ['й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ'],
-    ['ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э'],
-    ['⌫', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', 'ввод'],
-  ];
+  const requesting = useAppSelector((state) => state.requesting);
+  const letters = useAppSelector((state) => state.letters);
+
+  const dispatch = useAppDispatch();
+
+  const opacity = requesting ? 'opacity-50' : '';
+
+  const handlePressKey = useCallback(
+    (key: string) => {
+      if (!flatKeys.includes(key)) return;
+
+      switch (key) {
+        case 'Backspace':
+          dispatch(backspace());
+          break;
+        case 'Enter':
+          dispatch(doAttempt());
+          break;
+        default:
+          dispatch(typeLetter(key));
+      }
+    },
+    [dispatch]
+  );
+
+  useEffect(() => {
+    const nativeKeyboardListener = (e: KeyboardEvent) => {
+      handlePressKey(e.key);
+    };
+
+    window.addEventListener('keyup', nativeKeyboardListener);
+
+    return () => window.removeEventListener('keyup', nativeKeyboardListener);
+  }, [dispatch, handlePressKey]);
 
   return (
-    <div className="fixed bottom-1 max-w-md w-full p-4">
-      {keys.map((item) => {
-        return (
-          <div className="flex">
-            {item.map((letter) => {
-              return <Key value={letter} />;
-            })}
-          </div>
-        );
-      })}
+    <div className={`fixed bottom-1 max-w-md w-full p-4 ${opacity}`}>
+      {keys.map((item) => (
+        <div key={item[0]} className="flex">
+          {item.map((letter) => {
+            const letterClassName = getClassNameByLetterState(letter, letters);
+
+            return (
+              <Key
+                key={letter}
+                value={letter}
+                onPress={handlePressKey}
+                letterClassName={letterClassName}
+              />
+            );
+          })}
+        </div>
+      ))}
     </div>
   );
 };

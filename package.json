@@ -3,11 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.0",
+    "axios": "^0.26.1",
+    "cross-env": "^7.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0"
+    "react-redux": "^7.2.6",
+    "react-scripts": "5.0.0",
+    "redux-persist": "^6.0.0",
+    "source-map-explorer": "^2.5.2"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -16,9 +23,7 @@
     "prettier:check": "prettier src --check",
     "lint": "eslint src --max-warnings 0 --report-unused-disable-directives",
     "lint:fix": "eslint src --fix",
-    "check": "npm run prettier:check && npm run lint && npm run build",
-    "sb": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "check": "npm run prettier:check && npm run lint &&cross-env CI=true npm run test &&cross-env CI=true npm run build"
   },
   "browserslist": {
     "production": [
@@ -33,14 +38,6 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.4.18",
-    "@storybook/addon-essentials": "^6.4.18",
-    "@storybook/addon-links": "^6.4.18",
-    "@storybook/builder-webpack5": "^6.4.18",
-    "@storybook/manager-webpack5": "^6.4.18",
-    "@storybook/node-logger": "^6.4.18",
-    "@storybook/preset-create-react-app": "^4.0.0",
-    "@storybook/react": "^6.4.18",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
