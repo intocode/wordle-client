@@ -1,6 +1,8 @@
 import { BG_GRAY, BG_GREEN, BG_ORANGE, BG_SLATE } from '../constants';
 import { AttemptLetterInterface } from '../types';
 
+// todo: добавить комментарии для всего кода ниже
+
 interface T {
   (
     oldLetters: AttemptLetterInterface,
