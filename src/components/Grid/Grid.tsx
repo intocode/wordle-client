@@ -5,7 +5,9 @@ import GridRow from './GridRow';
 const Grid = () => {
   const maxAttemptsCount = useAppSelector((state) => state.maxAttemptsCount);
 
-  // количество строк = максимальное количество попыток
+  /**
+   * Нужно сгенерировать столько строк, сколько указано максимальное количество попыток
+   */
   const maxAttempts = Array(maxAttemptsCount).fill(null);
 
   // todo: исправить -300px (сделать более универсальным)

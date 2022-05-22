@@ -38,6 +38,8 @@ const Keyboard = () => {
     [dispatch]
   );
 
+  // возможность набирать буквы с клавиатуры
+  // todo: предусмотреть букву ё
   useEffect(() => {
     const nativeKeyboardListener = (e: KeyboardEvent) => {
       handlePressKey(e.key);

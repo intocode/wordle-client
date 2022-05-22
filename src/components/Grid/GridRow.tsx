@@ -13,8 +13,10 @@ const GridRow = ({ index }: LineCellProps) => {
   const letters = useAppSelector((state) => state.letters);
   const typingWord = useAppSelector((state) => state.typingWord);
 
+  // пустые ячейки, для мэппинга ниже, чтобы заполнить буквами
   const cells = Array(wordLength).fill(null);
 
+  // текущее слово
   const word = attempts[index];
 
   const row: JSX.Element[] = cells.map((_, cellIndex) => {

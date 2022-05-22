@@ -14,9 +14,7 @@ const Key = ({ value, onPress, letterClassName }: KeyProps) => {
     text-sm cursor-pointer select-none text-black ${letterClassName}
   `;
 
-  const handleClick = () => {
-    onPress(value);
-  };
+  const handleClick = () => onPress(value);
 
   const keyName = getKeysVisualName(value);
 

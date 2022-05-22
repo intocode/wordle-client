@@ -11,6 +11,9 @@ import { concatAttemptLetters } from '../utils/game';
 
 axios.defaults.baseURL = 'http://localhost:3030';
 
+// экшен креейтеры ниже вынесены за createSlice потому что используются в санках
+// и должны быть объявлены до того как будут использованы
+
 const wordGuessed = createAction('wordGuessed');
 
 const attempted = createAction<AttemptLetterInterface>('attempted');
@@ -65,6 +68,8 @@ export const doAttempt = createAsyncThunk(
     }
   }
 );
+
+// todo: добавить комментарии для всего кода ниже
 
 export const getNewToken = createAsyncThunk(
   'getNewToken',

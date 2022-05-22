@@ -18,4 +18,5 @@ const Cell = ({ value, className }: CellProps) => {
   );
 };
 
+// todo: чекнуть необходимость использования memo
 export default React.memo(Cell);
