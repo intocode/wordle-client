@@ -1,9 +1,9 @@
 import React from 'react';
-import useGame from '../../../context/GameContext/useGame';
-import GridRow from '../../GridRow/GridRow';
+import { useAppSelector } from '../../redux/hooks';
+import GridRow from './GridRow';
 
 const Grid = () => {
-  const { maxAttemptsCount } = useGame();
+  const maxAttemptsCount = useAppSelector((state) => state.maxAttemptsCount);
 
   // количество строк = максимальное количество попыток
   const maxAttempts = Array(maxAttemptsCount).fill(null);
@@ -14,11 +14,16 @@ const Grid = () => {
       <div className="flex flex-auto justify-center items-center">
         <div className="w-full p-6">
           {maxAttempts.map((_, index) => (
-            <GridRow index={index} />
+            <GridRow
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              index={index}
+            />
           ))}
         </div>
       </div>
     </div>
   );
 };
+
 export default Grid;

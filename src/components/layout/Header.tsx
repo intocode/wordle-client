@@ -3,10 +3,12 @@ import HelpIcon from '../icons/HelpIcon';
 import RatingIcon from '../icons/RatingIcon';
 import SettingsIcon from '../icons/SettingsIcon';
 import '../../App.css';
-import useGame from '../../context/GameContext/useGame';
+import { useAppSelector } from '../../redux/hooks';
 
 const Header = () => {
-  const game = useGame();
+  const record = useAppSelector((state) => state.record);
+  const info = useAppSelector((state) => state.info);
+  const wordGuessed = useAppSelector((state) => state.wordGuessed);
 
   return (
     <>
@@ -26,25 +28,9 @@ const Header = () => {
           <SettingsIcon />
         </button>
       </header>
-      <div className="text-center text-sm">
-        test: {game.maxAttemptsCount} попыток, {game.wordLength} длина
-      </div>
-      <div>
-        <button
-          className="bg-lime-600 p-2"
-          type="button"
-          onClick={() => game.setMaxAttempts(game.maxAttemptsCount + 1)}
-        >
-          +
-        </button>
-        <button
-          className="bg-amber-300 p-2"
-          type="button"
-          onClick={() => game.setMaxAttempts(game.maxAttemptsCount - 1)}
-        >
-          -
-        </button>
-      </div>
+      <div>Рекорд: {record}</div>
+      <div>{info}</div>
+      <div>{wordGuessed && <div>Слово отгадано верно. Играем дальше</div>}</div>
     </>
   );
 };
