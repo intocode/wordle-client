@@ -11,7 +11,7 @@ const Key = ({ value, onPress, letterClassName }: KeyProps) => {
   // todo заменить пикселы на рэмы
   const classNameColor = `
     flex-1 mr-[4px] mb-[4px] rounded uppercase font-bold h-12 w-10 
-    text-sm cursor-pointer select-none text-black ${letterClassName}
+    text-sm cursor-pointer select-none ${letterClassName}
   `;
 
   const handleClick = () => onPress(value);

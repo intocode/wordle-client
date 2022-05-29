@@ -76,7 +76,7 @@ export const getClassNameByLetterState = (
     }
   });
 
-  return className;
+  return `${className} text-white border-0`;
 };
 
 export const getKeysVisualName = (key: string) => {
