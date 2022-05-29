@@ -5,6 +5,7 @@ import Grid from './components/Grid/Grid';
 import { INFO_DISAPPEAR_MS, LS_TOKEN_KEY } from './constants';
 import { useAppDispatch } from './redux/hooks';
 import { clearInfo, getNewToken } from './redux/gameSlice';
+import GameModals from './components/GameModals/GameModals';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -32,6 +33,7 @@ function App() {
         <Header />
         <Grid />
         <Keyboard />
+        <GameModals />
       </div>
     </div>
   );
