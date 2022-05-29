@@ -16,6 +16,8 @@ axios.defaults.baseURL = 'http://localhost:3030';
 
 const wordGuessed = createAction('wordGuessed');
 
+export const closeWordGuessedModal = createAction('closeWordGuessedModal');
+
 const attempted = createAction<AttemptLetterInterface>('attempted');
 
 export const addInfo = createAction<string>('info/add');
@@ -128,11 +130,14 @@ const gameSlice = createSlice({
     });
 
     builder.addCase(wordGuessed, (state) => {
-      state.typingWord = '';
       state.record += 1;
+      state.wordGuessed = true;
+    });
+
+    builder.addCase(closeWordGuessedModal, (state) => {
       state.attempts = [];
       state.letters = [];
-      state.wordGuessed = true;
+      state.wordGuessed = false;
     });
 
     builder.addCase(

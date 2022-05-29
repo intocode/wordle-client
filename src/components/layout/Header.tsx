@@ -8,7 +8,6 @@ import { useAppSelector } from '../../redux/hooks';
 const Header = () => {
   const record = useAppSelector((state) => state.record);
   const info = useAppSelector((state) => state.info);
-  const wordGuessed = useAppSelector((state) => state.wordGuessed);
 
   return (
     <>
@@ -30,7 +29,6 @@ const Header = () => {
       </header>
       <div>Рекорд: {record}</div>
       <div>{info}</div>
-      <div>{wordGuessed && <div>Слово отгадано верно. Играем дальше</div>}</div>
     </>
   );
 };
