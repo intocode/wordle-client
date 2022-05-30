@@ -36,37 +36,42 @@ const errorOccured = createAsyncThunk(
 
 export const doAttempt = createAsyncThunk(
   'doAttempt',
+  // eslint-disable-next-line consistent-return
   async (_, { getState, rejectWithValue, dispatch }) => {
-    const { typingWord } = getState() as GameStateInterface;
+    const { typingWord, wordLength } = getState() as GameStateInterface;
 
-    try {
-      const response = await axios.post('/word', {
-        token: localStorage.getItem(LS_TOKEN_KEY),
-        word: typingWord,
-      });
+    if(typingWord.length !== wordLength) {
+      dispatch(errorOccured('Слишком короткое слово'));
+    } else {
+      try {
+        const response = await axios.post('/word', {
+          token: localStorage.getItem(LS_TOKEN_KEY),
+          word: typingWord,
+        });
 
-      const { data } = response;
+        const { data } = response;
 
-      // попытка прошла, пришла схема
-      if (data.schema) {
-        dispatch(attempted(data.schema));
+        // попытка прошла, пришла схема
+        if (data.schema) {
+          dispatch(attempted(data.schema));
+        }
+
+        // слово отгадано верно
+        if (data.guessed) {
+          dispatch(wordGuessed());
+        }
+
+        // произошла какая-то ошибка
+        if (data.error) {
+          dispatch(errorOccured(data.error));
+        }
+
+        return data;
+      } catch (e: any) {
+        dispatch(errorOccured(e.response.data.error));
+
+        return rejectWithValue(e.response.data.error);
       }
-
-      // слово отгадано верно
-      if (data.guessed) {
-        dispatch(wordGuessed());
-      }
-
-      // произошла какая-то ошибка
-      if (data.error) {
-        dispatch(errorOccured(data.error));
-      }
-
-      return data;
-    } catch (e: any) {
-      dispatch(errorOccured(e.response.data.error));
-
-      return rejectWithValue(e.response.data.error);
     }
   }
 );
