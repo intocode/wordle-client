@@ -30,4 +30,7 @@ export interface GameStateInterface {
 
   // отгадано ли последнее слово, если true, то будет видно модальное окно
   wordGuessed: boolean;
+
+  // становится true при истечении попыток
+  gameOver: boolean;
 }

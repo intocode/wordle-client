@@ -19,6 +19,7 @@ const wordGuessed = createAction('wordGuessed');
 export const closeWordGuessedModal = createAction('closeWordGuessedModal');
 
 const attempted = createAction<AttemptLetterInterface>('attempted');
+const gameOver = createAction('gameOver');
 
 export const addInfo = createAction<string>('info/add');
 export const clearInfo = createAction('info/clear');
@@ -40,7 +41,7 @@ export const doAttempt = createAsyncThunk(
   async (_, { getState, rejectWithValue, dispatch }) => {
     const { typingWord, wordLength } = getState() as GameStateInterface;
 
-    if(typingWord.length !== wordLength) {
+    if (typingWord.length !== wordLength) {
       dispatch(errorOccured('Слишком короткое слово'));
     } else {
       try {
@@ -59,6 +60,11 @@ export const doAttempt = createAsyncThunk(
         // слово отгадано верно
         if (data.guessed) {
           dispatch(wordGuessed());
+        }
+
+        // это была последняя попытка
+        if (data.gameOver) {
+          dispatch(gameOver());
         }
 
         // произошла какая-то ошибка
@@ -108,6 +114,7 @@ const initialState: GameStateInterface = {
   typingWord: '',
   record: 0,
   wordGuessed: false,
+  gameOver: false,
 };
 
 const gameSlice = createSlice({
@@ -126,6 +133,10 @@ const gameSlice = createSlice({
   },
 
   extraReducers: (builder) => {
+    builder.addCase(gameOver, (state) => {
+      state.gameOver = true;
+    });
+
     builder.addCase(addInfo, (state, action: PayloadAction<string>) => {
       state.info = action.payload;
     });
