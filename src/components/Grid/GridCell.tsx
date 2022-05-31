@@ -10,7 +10,7 @@ const Cell = ({ value, className }: CellProps) => {
   // todo: пиксели заменить на rem'ы
   // todo чекнуть правильность использованных классов
   const classNameColor = `
-      w-[64px] h-[72px] border-2 uppercase flex items-center justify-center 
+      w-[64px] h-[64px] border-2 uppercase flex items-center justify-center 
       mx-0.5 text-4xl font-bold ${className}`;
 
   return (
