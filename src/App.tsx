@@ -4,7 +4,7 @@ import Header from './components/layout/Header';
 import Grid from './components/Grid/Grid';
 import { INFO_DISAPPEAR_MS, LS_TOKEN_KEY } from './constants';
 import { useAppDispatch } from './redux/hooks';
-import { clearInfo, getNewToken } from './redux/gameSlice';
+import { clearInfo, getNewToken, resetRequesting } from './redux/gameSlice';
 import GameModals from './components/GameModals/GameModals';
 
 function App() {
@@ -25,6 +25,9 @@ function App() {
      * процесс очищения сообщения вручную после открытия игры
      */
     setTimeout(() => dispatch(clearInfo()), INFO_DISAPPEAR_MS);
+
+    // по той же причине сбрасываем state.requesting
+    dispatch(resetRequesting());
   });
 
   return (

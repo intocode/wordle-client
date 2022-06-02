@@ -16,6 +16,8 @@ axios.defaults.baseURL = 'http://localhost:3030';
 
 const wordGuessed = createAction('wordGuessed');
 
+export const resetRequesting = createAction('resetRequesting');
+
 export const closeWordGuessedModal = createAction('closeWordGuessedModal');
 
 const attempted = createAction<AttemptLetterInterface>('attempted');
@@ -32,6 +34,21 @@ const errorOccured = createAsyncThunk(
     setTimeout(() => {
       dispatch(clearInfo());
     }, INFO_DISAPPEAR_MS);
+  }
+);
+
+export const startNewGame = createAsyncThunk(
+  'startNewGame',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.post('/token/restart', {
+        token: localStorage.getItem(LS_TOKEN_KEY),
+      });
+
+      return response;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(`Произошла непредвиденная ошибка: ${e}`);
+    }
   }
 );
 
@@ -133,6 +150,30 @@ const gameSlice = createSlice({
   },
 
   extraReducers: (builder) => {
+    builder.addCase(resetRequesting, (state) => {
+      state.requesting = false;
+    });
+
+    builder.addCase(startNewGame.pending, (state) => {
+      state.requesting = true;
+    });
+
+    builder.addCase(startNewGame.fulfilled, (state) => {
+      state.requesting = false;
+      state.typingWord = '';
+      state.attempts = [];
+      state.gameOver = false;
+      state.letters = [];
+    });
+
+    builder.addCase(
+      startNewGame.rejected,
+      (state, action: PayloadAction<any>) => {
+        state.info = action.payload;
+        state.requesting = false;
+      }
+    );
+
     builder.addCase(gameOver, (state) => {
       state.gameOver = true;
     });
