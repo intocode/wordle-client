@@ -1,5 +1,6 @@
 import React from 'react';
 import { BG_GREEN } from '../../constants';
+import { startNewGame } from '../../redux/gameSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import Modal from '../Modal/Modal';
 import ModalTitle from '../Modal/ModalTitle';
@@ -9,10 +10,11 @@ const GameOverModal = () => {
 
   const gameOver = useAppSelector((state) => state.gameOver);
   const record = useAppSelector((state) => state.record);
+  const requesting = useAppSelector((state) => state.requesting);
 
   const handleStartNewGame = () => {
     // todo: сделать санк для старта новой игры
-    dispatch({ type: 'noop' }); // просто заглушка
+    dispatch(startNewGame()); // просто заглушка
   };
 
   return (
@@ -30,6 +32,7 @@ const GameOverModal = () => {
             onClick={handleStartNewGame}
             type="button"
             className={`${BG_GREEN} p-3 text-white rounded-sm`}
+            disabled={requesting}
           >
             Начать заново
           </button>
