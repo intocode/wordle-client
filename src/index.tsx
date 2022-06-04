@@ -1,10 +1,14 @@
+import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
 import './App.css';
+import { SERVER_URL } from './constants';
 import { store, persistor } from './redux/configureStore';
+
+axios.defaults.baseURL = SERVER_URL;
 
 ReactDOM.render(
   <React.StrictMode>

@@ -9,8 +9,6 @@ import { AttemptLetterInterface, GameStateInterface } from '../types';
 import { INFO_DISAPPEAR_MS, LS_TOKEN_KEY } from '../constants';
 import { concatAttemptLetters } from '../utils/game';
 
-axios.defaults.baseURL = 'http://localhost:3030';
-
 // экшен креейтеры ниже вынесены за createSlice потому что используются в санках
 // и должны быть объявлены до того как будут использованы
 
