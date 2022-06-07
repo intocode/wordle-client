@@ -12,7 +12,7 @@ const Grid = () => {
 
   // todo: исправить -300px (сделать более универсальным)
   return (
-    <div className="h-[calc(100vh-300px)] overflow-y-scroll flex-1 flex justify-center">
+    <div className="overflow-y-scroll flex-1 flex justify-center">
       <div className="flex flex-auto justify-center items-center">
         <div className="w-full p-6">
           {maxAttempts.map((_, index) => (
