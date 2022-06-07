@@ -20,7 +20,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="mx-auto max-w-md relative">
+    <div className="mx-auto max-w-md flex flex-col h-screen justify-between relative">
       <Header />
       <Grid />
       <Keyboard />

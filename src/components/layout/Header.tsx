@@ -13,7 +13,7 @@ const Header = () => {
           </h1>
         </div>
       </header>
-      <div>Рекорд: {record}</div>
+      <div className="text-sm text-center">Отгадано слов: {record}</div>
     </>
   );
 };
