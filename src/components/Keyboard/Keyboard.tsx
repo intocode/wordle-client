@@ -51,7 +51,7 @@ const Keyboard = () => {
   }, [dispatch, handlePressKey]);
 
   return (
-    <div className={`fixed bottom-1 max-w-md w-full p-4 ${opacity}`}>
+    <div className={`p-2 ${opacity}`}>
       {keys.map((item) => (
         <div key={item[0]} className="flex">
           {item.map((letter) => {
