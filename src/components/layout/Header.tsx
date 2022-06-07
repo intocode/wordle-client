@@ -7,7 +7,6 @@ import { useAppSelector } from '../../redux/hooks';
 
 const Header = () => {
   const record = useAppSelector((state) => state.record);
-  const info = useAppSelector((state) => state.info);
 
   return (
     <>
@@ -28,7 +27,6 @@ const Header = () => {
         </button>
       </header>
       <div>Рекорд: {record}</div>
-      <div>{info}</div>
     </>
   );
 };
