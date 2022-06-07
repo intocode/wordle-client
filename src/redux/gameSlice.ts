@@ -14,8 +14,6 @@ import { concatAttemptLetters } from '../utils/game';
 
 const wordGuessed = createAction('wordGuessed');
 
-export const resetRequesting = createAction('resetRequesting');
-
 export const closeWordGuessedModal = createAction('closeWordGuessedModal');
 
 const attempted = createAction<AttemptLetterInterface>('attempted');
@@ -148,10 +146,6 @@ const gameSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    builder.addCase(resetRequesting, (state) => {
-      state.requesting = false;
-    });
-
     builder.addCase(startNewGame.pending, (state) => {
       state.requesting = true;
     });
