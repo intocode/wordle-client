@@ -15,6 +15,7 @@ import gameReducer from './gameSlice';
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['requesting', 'info'],
 };
 
 const store = configureStore({
