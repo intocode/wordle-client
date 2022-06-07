@@ -19,16 +19,16 @@ export const closeWordGuessedModal = createAction('closeWordGuessedModal');
 const attempted = createAction<AttemptLetterInterface>('attempted');
 const gameOver = createAction('gameOver');
 
-export const addInfo = createAction<string>('info/add');
-export const clearInfo = createAction('info/clear');
+export const unshiftInfo = createAction<string>('info/unshift');
+export const popInfo = createAction('info/pop');
 
 const errorOccured = createAsyncThunk(
   'error',
   (error: string, { dispatch }) => {
-    dispatch(addInfo(error));
+    dispatch(unshiftInfo(error));
 
     setTimeout(() => {
-      dispatch(clearInfo());
+      dispatch(popInfo());
     }, INFO_DISAPPEAR_MS);
   }
 );
@@ -51,7 +51,7 @@ export const startNewGame = createAsyncThunk(
 export const doAttempt = createAsyncThunk(
   'doAttempt',
   // eslint-disable-next-line consistent-return
-  async (_, { getState, rejectWithValue, dispatch }) => {
+  async (_, { getState, dispatch }) => {
     const { typingWord, wordLength } = getState() as GameStateInterface;
 
     if (typingWord.length !== wordLength) {
@@ -87,9 +87,15 @@ export const doAttempt = createAsyncThunk(
 
         return data;
       } catch (e: any) {
-        dispatch(errorOccured(e.response.data.error));
+        let errorMsg = `Ошибка сети: ${e.toString()}`;
 
-        return rejectWithValue(e.response.data.error);
+        if (e.response?.data?.error) {
+          errorMsg = e.response.data.error;
+        }
+
+        dispatch(errorOccured(errorMsg));
+
+        return Promise.reject();
       }
     }
   }
@@ -118,7 +124,7 @@ export const getNewToken = createAsyncThunk(
 );
 
 const initialState: GameStateInterface = {
-  info: null,
+  info: [],
   requesting: false,
   maxAttemptsCount: 6,
   wordLength: 5,
@@ -170,12 +176,12 @@ const gameSlice = createSlice({
       state.gameOver = true;
     });
 
-    builder.addCase(addInfo, (state, action: PayloadAction<string>) => {
-      state.info = action.payload;
+    builder.addCase(unshiftInfo, (state, action: PayloadAction<string>) => {
+      state.info.unshift(action.payload);
     });
 
-    builder.addCase(clearInfo, (state) => {
-      state.info = null;
+    builder.addCase(popInfo, (state) => {
+      state.info.pop();
     });
 
     builder.addCase(wordGuessed, (state) => {
@@ -206,9 +212,8 @@ const gameSlice = createSlice({
       state.requesting = false;
     });
 
-    builder.addCase(doAttempt.rejected, (state, action) => {
+    builder.addCase(doAttempt.rejected, (state) => {
       state.requesting = false;
-      state.info = action.payload as string;
     });
 
     builder.addCase(getNewToken.pending, (state) => {

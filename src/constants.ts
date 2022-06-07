@@ -6,7 +6,7 @@ export const BG_SLATE = 'bg-slate-200';
 export const BG_GRAY = 'bg-neutral-500';
 
 // количество миллисекунд, после которого закрывается info-сообщение
-export const INFO_DISAPPEAR_MS = 2000;
+export const INFO_DISAPPEAR_MS = 800;
 
 export const SERVER_URL =
   process.env.REACT_APP_SERVER_URL || 'https://wordle-server.intocode.ru';

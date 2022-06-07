@@ -5,7 +5,7 @@ export interface AttemptLetterInterface extends Array<[string, number]> {}
  */
 export interface GameStateInterface {
   // сообщение для вывода в процессе игры
-  info: string | null;
+  info: string[];
 
   // флаг для текущих запросов
   requesting: boolean;

@@ -6,6 +6,7 @@ import { LS_TOKEN_KEY } from './constants';
 import { useAppDispatch } from './redux/hooks';
 import { getNewToken } from './redux/gameSlice';
 import GameModals from './components/GameModals/GameModals';
+import Popovers from './components/Popovers/Popovers';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -19,13 +20,12 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <div className="mx-auto max-w-md">
-        <Header />
-        <Grid />
-        <Keyboard />
-        <GameModals />
-      </div>
+    <div className="mx-auto max-w-md relative">
+      <Header />
+      <Grid />
+      <Keyboard />
+      <GameModals />
+      <Popovers />
     </div>
   );
 }
